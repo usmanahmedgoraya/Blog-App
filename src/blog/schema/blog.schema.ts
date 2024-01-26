@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { User } from 'src/auth/schema/user.schemas';
+import { Categories } from './categories.schema';
 import { Comment } from './comment.schema';
 import { Reaction } from './reaction.schema';
-import { Categories } from './categories.schema';
 
 export type BlogDocument = HydratedDocument<Blog>;
 export enum Status {
@@ -18,7 +18,7 @@ export enum Status {
 
 
 export class Blog {
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "User", required:true })
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "User", required: true })
     user: User;
 
     @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: "Reaction" }])
@@ -27,7 +27,7 @@ export class Blog {
     @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }])
     comments: Comment[]
 
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Categories",required:true })
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Categories", required: true })
     categories: Categories
 
     @Prop({ required: true })

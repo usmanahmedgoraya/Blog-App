@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
-import { BlogService } from './blog.service';
-import { BlogSchema } from './schema/blog.schema';
 import { MongooseModule } from '@nestjs/mongoose';
-import { BlogController } from './blog.controller';
 import { AuthModule } from 'src/auth/auth.module';
-import CommentSchema from './schema/comment.schema';
-import { ReactionSchema } from './schema/reaction.schema';
-import { CategoriesSchema } from './schema/categories.schema';
+import { RepliesController } from './Replies/replies.controller';
+import { RepliesService } from './Replies/replies.service';
+import { BlogController } from './blog.controller';
+import { BlogService } from './blog.service';
 import { CategoryController } from './categories/category.controller';
 import { CategoryService } from './categories/category.service';
-import { ReactionController } from './reaction/reaction.controller';
-import { ReactionService } from './reaction/reaction.service';
 import { commentController } from './comment/comment.controller';
 import { CommentService } from './comment/comment.service';
-import { RepliesService } from './Replies/replies.service';
-import { RepliesController } from './Replies/replies.controller';
+import { ReactionController } from './reaction/reaction.controller';
+import { ReactionService } from './reaction/reaction.service';
 import { RepliesSchema } from './schema/Replies.schema';
+import { BlogSchema } from './schema/blog.schema';
+import { CategoriesSchema } from './schema/categories.schema';
+import CommentSchema from './schema/comment.schema';
+import { ReactionSchema } from './schema/reaction.schema';
 
 @Module({
   imports: [

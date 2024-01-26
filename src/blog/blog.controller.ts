@@ -29,7 +29,7 @@ export class BlogController {
     async findById(
         @Param('id')
         id: string,
-        
+
     ) {
         return await this.blogService.findOne(id);
     }

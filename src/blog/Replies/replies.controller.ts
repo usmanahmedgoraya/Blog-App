@@ -10,17 +10,26 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class RepliesController {
     constructor(private repliesService: RepliesService) { }
 
+    // =================
+    // Get All Replies
+    // =================
     @Get()
     async findAllReplies(@Query() query: ExpressQuery): Promise<Replies[]> {
         return await this.repliesService.findAll(query);
     }
 
-    @Post()
+    // ==============
+    // Create Replies
+    // ==============
+    @Post(":id")
     @UseGuards(new JwtAuthGuard())
-    async createReplies(@Body() createRepliesDto: createRepliesDto, @Req() req): Promise<Replies> {
-        return await this.repliesService.createReplies(createRepliesDto, req.user)
+    async createReplies(@Param('id') id: string, @Body() createRepliesDto: createRepliesDto, @Req() req: any): Promise<Replies> {
+        return await this.repliesService.createReplies(id, createRepliesDto, req.user)
     }
 
+    // ================
+    // Update replies
+    // ================
     @Patch(':id')
     @UseGuards(new JwtAuthGuard())
     async update(@Param('id') id: string, @Body() updateRepliesDto: updateRepliesDto, @Req() req) {
@@ -28,6 +37,9 @@ export class RepliesController {
         return Replies
     }
 
+    // ===============
+    // Delete Reply
+    // ===============
     @Delete(':id')
     @UseGuards(new JwtAuthGuard())
     async DeleteReplies(@Param('id') id: string, @Req() req) {

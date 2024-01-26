@@ -1,8 +1,8 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import mongoose, { Model } from 'mongoose';
-import { Categories } from '../schema/categories.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Query } from 'express-serve-static-core';
+import mongoose, { Model } from 'mongoose';
+import { Categories } from '../schema/categories.schema';
 import { createCategoryDto } from './dto/create-category.dto';
 import { updateCategoryDto } from './dto/update-category.dto';
 
@@ -69,7 +69,7 @@ export class CategoryService {
             }
 
             // Simply Update the category :)
-            const updatedCategory = await this.categoryModel.findByIdAndUpdate(id, {name:lowerName})
+            const updatedCategory = await this.categoryModel.findByIdAndUpdate(id, { name: lowerName })
             return updatedCategory;
         } catch (error) {
             return error.message

@@ -30,7 +30,7 @@ export class commentController {
 
     // Controller for Update the Comment
     @Patch(':id')
-    @UseGuards(new JwtAuthGuard(),RolesGuard)
+    @UseGuards(new JwtAuthGuard(), RolesGuard)
     @Roles(Role.USER)
     async update(@Param('id') id: string, @Body() updateCommentDto: updateCommentDto, @Req() req) {
         const comment = await this.commentservice.UpdateComment(id, updateCommentDto, req.user);

@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document, HydratedDocument } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { User } from 'src/auth/schema/user.schemas';
+import { Replies } from './Replies.schema';
 import { Blog } from './blog.schema';
-import { Replies, RepliesDocument } from './Replies.schema';
 
 export type CommentDocument = Document & Comment;
 
@@ -21,7 +21,7 @@ export class Comment extends Document {
     content: string;
 
     @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: "Replies" }])
-    replies: Replies;
+    replies: Replies[];
 }
 
 const CommentSchema = SchemaFactory.createForClass(Comment);

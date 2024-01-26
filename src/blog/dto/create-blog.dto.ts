@@ -1,8 +1,8 @@
 import { IsString } from "class-validator";
 import { User } from "src/auth/schema/user.schemas";
 import { Status } from "../schema/blog.schema";
-import { Reaction } from "../schema/reaction.schema";
 import { Comment } from "../schema/comment.schema";
+import { Reaction } from "../schema/reaction.schema";
 
 
 export class createBlogDto {

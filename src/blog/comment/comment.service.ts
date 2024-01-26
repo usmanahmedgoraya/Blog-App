@@ -3,10 +3,10 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Query } from 'express-serve-static-core';
 import mongoose, { Model } from 'mongoose';
 import { Role, User } from 'src/auth/schema/user.schemas';
+import { Blog } from '../schema/blog.schema';
 import { Comment } from '../schema/comment.schema';
 import { createCommentDto } from './dto/create-comment.dto';
 import { updateCommentDto } from './dto/update-comment.dto';
-import { Blog } from '../schema/blog.schema';
 
 @Injectable()
 export class CommentService {
@@ -24,7 +24,7 @@ export class CommentService {
         } : {};
 
         // find comments and exclude confidential information in populate method
-        return await this.commentModel.find({ ...keyword }).populate('user', '-password -userStatus -role');
+        return await this.commentModel.find({ ...keyword }).populate('user', '-password -userStatus -role').populate('replies');
     }
 
     // Create Comment
